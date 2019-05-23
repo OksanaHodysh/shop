@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Shopping Cart</h2>
+  <ul *ngIf="purchases.length; else emptyCart">
+    <li *ngFor="let purchase of purchases">{{ purchase.name }}</li>
+  </ul>
+  <ng-template #emptyCart>
+    You have no items in your shopping cart. Click <a href="#">here</a> to continue shopping.
+  </ng-template>
+</div>

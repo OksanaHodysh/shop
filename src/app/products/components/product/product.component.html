@@ -1,0 +1,26 @@
+<div class="container" *ngIf="product">
+  <h2>{{ product.name }}</h2>
+  <div class="tags">
+    <div class="category">{{ product.category }}</div>
+    <div [ngClass]="{
+      'available': product.isAvailable,
+      'unavailable': !product.isAvailable
+    }">
+    </div>
+    <div class="top-rated" *ngIf="product.isTopRated">&#9733;</div>
+  </div>
+  <p>{{ product.description }}</p>
+  <div>{{ product.price }}</div>
+  <div>
+    <button (click)="onBuy()">Buy</button>
+  </div>
+  <ul class="payments" *ngFor="let payment of product.payments">
+    <li>{{ payment }}</li>
+  </ul>
+  <hr>
+  <p>The seller of the product is {{ product.seller }}</p>
+  <button *ngIf="product.feedbacks.length" (click)="toggle()">{{ showFeedbacks ? 'Hide' : 'See' }} Feedbacks</button>
+  <div class="feedbacks" *ngIf="showFeedbacks">
+    <p *ngFor="let feedback of product.feedbacks">{{ feedback }}</p>
+  </div>
+</div>
